@@ -1,0 +1,31 @@
+$darkTheme: true;
+
+@if ($darkTheme == false) {
+    $mainColor1: rgb(42, 200, 200) !global;
+    $mainColor2: rgb(207, 79, 158) !global;
+    $mainColor3: white !global;
+    $mainColor4: white !global;
+} @else {
+    $mainColor1: rgb(41, 223, 71) !global;
+    $mainColor2: rgb(226, 197, 34) !global;
+    $mainColor3: rgb(131, 131, 131) !global;
+    $mainColor4: rgb(63, 63, 63) !global;
+}
+
+@if ($darkTheme == false) {
+    $mainShadowColor: rgba(34, 60, 80, 0.2) !global;
+} @else {
+    $mainShadowColor: rgba(160, 160, 160, 0.2) !global;
+}
+
+$lightShadowColor:#C4C4C4;
+$mainFont: "Comfortaa", sans-serif;
+
+@mixin text_color() {
+    @if ($darkTheme == true) {
+        color: white;
+    } @else {
+        color: black;
+    }
+}
+

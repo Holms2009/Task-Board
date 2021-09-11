@@ -1,0 +1,13 @@
+let page = document.querySelector('body');
+let board = page.querySelector('.board');
+let clearBoardButton = page.querySelector('.clear-board');
+let addCardButton = page.querySelector('.add-card');
+let cardTemplate = board.querySelector('#card-template').content.querySelector('.board-card');
+let taskTemplate = board.querySelector('#task-template').content.querySelector('.board-card__item');
+let cardId = 1;
+let form = page.querySelector('.card-contents');
+let textField = form.querySelector('.card-contents__text');
+let submitButton = form.querySelector('.card-contents__submit-button');
+let formHeader = form.querySelector('.card-contents__header-1');
+let formCardHeaderInput = form.querySelector('.card-contents__card-header');
+let blocker;
