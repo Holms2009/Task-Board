@@ -1,0 +1,54 @@
+{
+  "name": "toxin",
+  "version": "1.0.0",
+  "description": "First practice for MetaLamp learning course",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development webpack --mode development",
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "watch": "cross-env NODE_ENV=development webpack --mode development --watch",
+    "start": "cross-env NODE_ENV=development webpack-cli serve --mode development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Holms2009/toxin.git"
+  },
+  "keywords": [
+    "html",
+    "scss",
+    "js",
+    "webpack"
+  ],
+  "author": "Evgeny Banifatov <holms200990@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Holms2009/toxin/issues"
+  },
+  "homepage": "https://github.com/Holms2009/toxin#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.2.0",
+    "expose-loader": "^3.0.0",
+    "file-loader": "^6.2.0",
+    "glob-parent": "^6.0.1",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.2",
+    "html-webpack-pug-plugin": "^3.0.0",
+    "mini-css-extract-plugin": "^2.1.0",
+    "node-sass": "^6.0.1",
+    "resolve-url-loader": "^4.0.0",
+    "sass-loader": "^12.1.0",
+    "scss": "^0.2.4",
+    "style-loader": "^3.2.1",
+    "webpack": "^5.45.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "jquery": "^3.6.0",
+    "normalize.css": "^8.0.1",
+    "nouislider": "^15.2.0"
+  }
+}
