@@ -1,5 +1,5 @@
 # Task-Board
 
-  | Usede techs:
+  - Used techs:
     * JS ES6+
     * SCSS
