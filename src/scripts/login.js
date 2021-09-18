@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getFirestore, collection, getDocs, setDoc, updateDoc, doc,  } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, doc } from 'firebase/firestore/lite';
 
 const loginForm = document.querySelector('.page-header__login-form');
 const loginButton = loginForm.querySelector('.login-button');
@@ -15,14 +15,19 @@ const firebaseConfig = {
   measurementId: "G-5SZC6Y976H"
 };
 const app = initializeApp(firebaseConfig);
-const firestoreDatabase = getFirestore(app);
-let activeUser;
+const database = getFirestore(app);
+let activeUserBase;
 
-async function login(event) {
-  event.preventDefault();
+if (sessionStorage.loginState === undefined) {
+  sessionStorage.loginState = false;
+}
+
+checkLogin();
+
+async function login() {
   const userName = loginForm.querySelector('.user-name');
   const userPass = loginForm.querySelector('.user-password');
-  const users = await getData(firestoreDatabase);
+  const users = await getData(database);
   const user = findUser(users, userName.value);
 
   if (user instanceof Error) {
@@ -33,12 +38,9 @@ async function login(event) {
   const allowLogin = checkPassword(user, userPass.value);
 
   if (allowLogin) {
-    activeUser = doc(firestoreDatabase, `users`, userName.value);
-    commitLogin(activeUser);
-
-    userBlock.style.display = "inline-block";
-    name.innerHTML = userName.value;
-    loginForm.style.display = 'none';
+    sessionStorage.loginState = true;
+    sessionStorage.user = userName.value;
+    setLoggedInView(userName.value);
   } else {
     alert('Wrong password');
   }
@@ -47,7 +49,7 @@ async function login(event) {
 async function getData(db) {
   const users = collection(db, 'users');
   const list = await getDocs(users).then(snap => snap.docs.map(doc => doc.data()));
-  return list
+  return list;
 }
 
 function findUser(users, name) {
@@ -64,14 +66,17 @@ function checkPassword(user, pass) {
   return user.password === pass ? true : false;
 }
 
-async function commitLogin(user) {
-  try {
-    const request = await updateDoc(user, {
-        login: true
-    })
-  } catch(e) {
-    console.error("Error:", e);
-  }
+function setLoggedInView(user) {
+  userBlock.style.display = "inline-block";
+  name.innerHTML = user;
+  loginForm.style.display = 'none';
+  activeUserBase = doc(database, 'users', user);
+}
+
+function checkLogin() {
+  if (sessionStorage.loginState === 'true') setLoggedInView(sessionStorage.user);
 }
 
 loginButton.addEventListener('click', login);
+
+export { activeUserBase, getData, findUser, database };
