@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Holms2009/toxin#readme",
   "devDependencies": {
+    "firebase": "^9.0.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",

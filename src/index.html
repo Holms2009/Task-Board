@@ -2,97 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Borard</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
-    <link id="main_style" rel="stylesheet" href="./light.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Borard</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@700&display=swap" rel="stylesheet">
+  <link id="main_style" rel="stylesheet" href="./light.css">
 </head>
 
 <body>
-    <header>
-        <div class="page-header">
-            <ul class="page-header__list">
-                <li class="page-header__item">
-                    <button class="page-header__button add-card button">Новый список</button>
-                </li>
-                <li class="page-header__item">
-                    <button class="page-header__button clear-board button">Очистить</button>
-                </li>
-                <li>
-                  <input class="user-name" type="text" placeholder="Имя пользователя">
-                </li>
-                <li>
-                  <input class="user-password" type="text" placeholder="Пароль">
-                </li>
-                <li>
-                  <button class="login-button">Вход</button>
-                </li>
-                <li>
-                  <p class="user" style="display: none; margin: 0;"></p>
-                </li>
-            </ul>
+  <header>
+    <div class="page-header">
+      <ul class="page-header__list">
+        <li class="page-header__item">
+          <button class="page-header__button add-card button">Новый список</button>
+        </li>
+        <li class="page-header__item">
+          <button class="page-header__button clear-board button">Очистить</button>
+        </li>
+      </ul>
+      <form class="page-header__login-form">
+        <input class="user-name" type="text" placeholder="Имя пользователя">
+        <input class="user-password" type="password" placeholder="Пароль">
+        <button class="login-button">Вход</button>
+      </form>
+      <aside class="page-header__user" style="display: none;">
+        <span class="page-header__name"></span>
+        <img class="page-header__avatar" src="img/noavatar.png">
+      </aside>
+    </div>
+  </header>
+  <main>
+    <div class="board">
+      <div class="settings-menu" style="transform: translateY(-100%)">
+        <h2 class="settings-menu__main-header">Настройки:</h2>
+        <h3 class="settings-menu__header">Размер шрифта карточек:</h3>
+        <div class="settings-menu__font-size-section">
+          <span class="settings-menu__letter">А</span>
+          <input class="settings-menu__font-size-setting settings-menu__range" type="range" min="9" max="19" value="14">
+          <span class="settings-menu__letter">А</span>
         </div>
-    </header>
-    <main>
-        <div class="board">
-            <div class="settings-menu" style="transform: translateY(-100%)">
-                <h2 class="settings-menu__main-header">Настройки:</h2>
-                <h3 class="settings-menu__header">Размер шрифта карточек:</h3>
-                <div class="settings-menu__font-size-section">
-                    <span class="settings-menu__letter">А</span>
-                    <input class="settings-menu__font-size-setting settings-menu__range" type="range" min="9" max="19"
-                        value="14">
-                    <span class="settings-menu__letter">А</span>
-                </div>
-                <div class="settings-menu__theme-toggle-section">
-                    <h3 class="settings-menu__header">Цветовая схема:</h3>
-                    <div class="settings-menu__theme-toggler"
-                        style="background: linear-gradient(to right, rgb(41, 223, 71) 30%, white 30%); transition: all 0.2s;">
-                        <div class="settings-menu__toggler" title="Переключить тему оформления" style="left: -2px">
-                        </div>
-                    </div>
-                </div>
-                <button class="settings-menu__button">
-                    <img src="img/down_arrow.svg" alt="" class="settings-menu__button-image">
-                </button>
+        <div class="settings-menu__theme-toggle-section">
+          <h3 class="settings-menu__header">Цветовая схема:</h3>
+          <div class="settings-menu__theme-toggler"
+            style="background: linear-gradient(to right, rgb(41, 223, 71) 30%, white 30%); transition: all 0.2s;">
+            <div class="settings-menu__toggler" title="Переключить тему оформления" style="left: -2px">
             </div>
-            <template id='card-template'>
-                <div class="board-card" style="font-size: 14px; transition: transform 0.3s;">
-                    <h2 class="board-card__header"></h2>
-                    <ul class="board-card__list">
-                    </ul>
-                    <button class="board-card__add-task-button" title="Добавить задачу">
-                        <img src="img/plus.svg" class="board-card__adder-icon">
-                    </button>
-                    <p class="board-card__date"></p>
-                </div>
-            </template>
-            <template id="task-template">
-                <li class="board-card__item">
-                    <p class="board-card__task"></p>
-                    <button class="board-card__task-remover" title="Удалить задачу">
-                        <img src="img/cross.svg" class="board-card__remover-icon">
-                    </button>
-                    <svg class="board-card__list-marker" height="100" width="100">
-                        <circle class="board-card__circle" cx="5" cy="5" r="4" style="fill:limegreen" />
-                    </svg>
-                </li>
-            </template>
-            <span class="board__clock"></span>
+          </div>
         </div>
-    </main>
-    <form class="card-contents hidden">
-        <h2 class="card-contents__header card-contents__header-1 hidden">Заголовок карточки</h2>
-        <input type="text" class="card-contents__card-header hidden">
-        <h2 class="card-contents__header">Текст задачи</h2>
-        <textarea class="card-contents__text"></textarea>
-        <button class="card-contents__submit-button">Добавить</button>
-    </form>
+        <button class="settings-menu__button">
+          <img src="img/down_arrow.svg" alt="" class="settings-menu__button-image">
+        </button>
+      </div>
+      <template id='card-template'>
+        <div class="board-card" style="font-size: 14px; transition: transform 0.3s;">
+          <h2 class="board-card__header"></h2>
+          <ul class="board-card__list">
+          </ul>
+          <button class="board-card__add-task-button" title="Добавить задачу">
+            <img src="img/plus.svg" class="board-card__adder-icon">
+          </button>
+          <p class="board-card__date"></p>
+        </div>
+      </template>
+      <template id="task-template">
+        <li class="board-card__item">
+          <p class="board-card__task"></p>
+          <button class="board-card__task-remover" title="Удалить задачу">
+            <img src="img/cross.svg" class="board-card__remover-icon">
+          </button>
+          <svg class="board-card__list-marker" height="100" width="100">
+            <circle class="board-card__circle" cx="5" cy="5" r="4" style="fill:limegreen" />
+          </svg>
+        </li>
+      </template>
+      <span class="board__clock"></span>
+    </div>
+  </main>
+  <form class="card-contents hidden">
+    <h2 class="card-contents__header card-contents__header-1 hidden">Заголовок карточки</h2>
+    <input type="text" class="card-contents__card-header hidden">
+    <h2 class="card-contents__header">Текст задачи</h2>
+    <textarea class="card-contents__text"></textarea>
+    <button class="card-contents__submit-button">Добавить</button>
+  </form>
 </body>
 
 </html>
