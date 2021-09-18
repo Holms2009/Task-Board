@@ -12,7 +12,7 @@ module.exports = {
   context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
-    main: './index.js',
+    main: './index.js'
   },
   output: {
     filename: '[name].js',
@@ -21,7 +21,6 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: 'all',
-      minChunks: 2
     }
   },
   devServer: {
@@ -63,10 +62,8 @@ module.exports = {
         ]
       },
       {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, {
-          loader: 'css-loader',
-        },
+        test: /\.(sa|sc|c)ss$/,
+        use: ['file-loader?name=[name].css',
           'sass-loader'],
       },
       {

@@ -38,6 +38,7 @@
     "html-webpack-pug-plugin": "^3.0.0",
     "mini-css-extract-plugin": "^2.1.0",
     "node-sass": "^6.0.1",
+    "postcss-loader": "^6.1.1",
     "resolve-url-loader": "^4.0.0",
     "sass-loader": "^12.1.0",
     "scss": "^0.2.4",
