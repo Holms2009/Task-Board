@@ -4,4 +4,4 @@
     * JS ES6+
     * SCSS
 
-  - Firebase link: https://task-board-d29a6.web.app
+  - Firebase link: https://board-3a7c6.web.app
