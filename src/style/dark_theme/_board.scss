@@ -7,6 +7,17 @@
     position: relative;
     background-color: $mainColor4;
     box-shadow: 0px 25px 10px -12px $mainShadowColor inset;
+
+    &__back-user-name {
+      margin: 0;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      font-size: 500px;
+      line-height: 500px;
+      color: $mainColor4;
+      filter: brightness(0.9);
+    }
 }
 
 .board-card {

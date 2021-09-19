@@ -402,7 +402,7 @@ if (localStorage.userSettings) {
   fontSizeHandler.value = parseInt(userSettings.cardsFontSize);
 }
 
-if (sessionStorage.loginState) {
+if (sessionStorage.loginState === 'true') {
   let cardsToRestore;
   let req = findActiveUser().then(function (res) {
     cardsToRestore = JSON.parse(res);

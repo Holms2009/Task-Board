@@ -5,6 +5,7 @@ const loginForm = document.querySelector('.page-header__login-form');
 const loginButton = loginForm.querySelector('.login-button');
 const userBlock = document.querySelector('.page-header__user');
 const name = userBlock.querySelector('.page-header__name');
+const userBG = document.querySelector('.board__back-user-name');
 const firebaseConfig = {
   apiKey: "AIzaSyCBehvUdJ1Sww5gcdv4yBRRpetngqVoFiY",
   authDomain: "board-3a7c6.firebaseapp.com",
@@ -70,6 +71,7 @@ function setLoggedInView(user) {
   userBlock.style.display = "inline-block";
   name.innerHTML = user;
   loginForm.style.display = 'none';
+  userBG.innerHTML = user;
   activeUserBase = doc(database, 'users', user);
 }
 
