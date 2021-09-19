@@ -42,6 +42,7 @@ async function login() {
     sessionStorage.loginState = true;
     sessionStorage.user = userName.value;
     setLoggedInView(userName.value);
+    document.location.reload();
   } else {
     alert('Wrong password');
   }
